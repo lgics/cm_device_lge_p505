@@ -5,7 +5,7 @@
 # Nedeed for sensors
 COMMON_GLOBAL_CFLAGS += -DUSE_LGE_ALS_DUMMY
 
-TARGET_KERNEL_CONFIG := cyanogenmod_phoenix_defconfig
+TARGET_KERNEL_CONFIG := cyanogenmod_p505_defconfig
 
 TARGET_BOOTLOADER_BOARD_NAME := p505
 TARGET_OTA_ASSERT_DEVICE := thunderg,p505
