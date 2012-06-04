@@ -4,7 +4,7 @@ TARGET_BOOTANIMATION_NAME := vertical-320x480
 # Include GSM stuff
 $(call inherit-product, vendor/cm/config/gsm.mk)
 
-# Inherit device configuration for p500.
+# Inherit device configuration for p505.
 $(call inherit-product, device/lge/p505/p505.mk)
 
 # Inherit some common cyanogenmod stuff.
