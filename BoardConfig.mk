@@ -14,4 +14,3 @@ BOARD_KERNEL_CMDLINE := mem=471M console=ttyMSM2,115200n8 androidboot.hardware=p
 
 USE_CAMERA_STUB := false
 
-
