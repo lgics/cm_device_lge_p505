@@ -52,4 +52,4 @@ etc/wl/rtecdc-mfgtest.bin
 
 ## HAL
 bin/ami304d
-lib/hw/sensors.p505.so
+lib/hw/sensors.p500.so

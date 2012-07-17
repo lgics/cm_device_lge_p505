@@ -10,9 +10,14 @@ persist.rild.nitz_short_ons_1=
 persist.rild.nitz_short_ons_2=
 persist.rild.nitz_short_ons_3=
 
+ro.telephony.call_ring.multiple=false
+ro.telephony.call_ring.delay=3000
+
 ro.telephony.default_network=0
 ro.telephony.ril.v3=signalstrength,skipbrokendatacall,facilitylock,datacall,icccardstatus,1
 mobiledata.interfaces=rmnet0,rmnet1,rmnet2
+
+ro.bt.bdaddr_path=/data/misc/bd_addr
 
 # see also: init.qcom.usb.rc and init.qcom.post_boot.sh
 persist.sys.usb.config=mass_storage,adb
