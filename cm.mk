@@ -26,6 +26,6 @@ PRODUCT_BUILD_PROP_OVERRIDES += \
     PRIVATE_BUILD_DESC="thunderg-user 2.3.3 GRI40 LG-p505-V20g.19C11F164C release-keys"
 
 # Release name and versioning
-PRODUCT_RELEASE_NAME := OptimusOne
+PRODUCT_RELEASE_NAME := OptimusPhoenix
 PRODUCT_VERSION_DEVICE_SPECIFIC :=
 -include vendor/cyanogen/products/common_versions.mk
