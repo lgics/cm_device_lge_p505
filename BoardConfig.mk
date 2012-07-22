@@ -9,6 +9,9 @@ TARGET_OTA_ASSERT_DEVICE := thunderg,p505
 
 USE_CAMERA_STUB := false
 
+TARGET_PROVIDES_LIBAUDIO := true
+COMMON_GLOBAL_CFLAGS += -DICS_AUDIO_BLOB
+
 # Fix this up by examining /proc/mtd on a running device
 BOARD_KERNEL_BASE := 0x12800000
 BOARD_KERNEL_PAGESIZE := 2048
