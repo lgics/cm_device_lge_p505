@@ -11,6 +11,10 @@ USE_CAMERA_STUB := false
 
 TARGET_PROVIDES_LIBAUDIO := true
 COMMON_GLOBAL_CFLAGS += -DICS_AUDIO_BLOB
+# Enable ICS-backwards compatibility    
+COMMON_GLOBAL_CFLAGS += -DQCOM_ICS_COMPAT
+# Disable PIE since it breaks ICS camera blobs
+TARGET_DISABLE_ARM_PIE := true
 
 # Fix this up by examining /proc/mtd on a running device
 BOARD_KERNEL_BASE := 0x12800000
