@@ -88,17 +88,14 @@ static audio_policy_dev_state_t ap_get_device_connection_state(
 static void ap_set_phone_state(struct audio_policy *pol, audio_mode_t state)
 {
     struct qcom_audio_policy *qap = to_qap(pol);
-    qap->apm->setPhoneState(state);
+    qap->apm->setPhoneState((int) state);
 }
 
     /* indicate a change in ringer mode */
 static void ap_set_ringer_mode(struct audio_policy *pol, uint32_t mode,
                                uint32_t mask)
 {
-#if 0
-    struct qcom_audio_policy *qap = to_qap(pol);
-    qap->apm->setRingerMode(mode, mask);
-#endif
+    //deprecated, never called
 }
 
     /* force using a specific device category for the specified usage */
@@ -147,7 +144,7 @@ static audio_io_handle_t ap_get_output(struct audio_policy *pol,
 
     ALOGV("%s: tid %d", __func__, gettid());
     return qap->apm->getOutput((AudioSystem::stream_type)stream,
-                               sampling_rate, format, channels,
+                               sampling_rate, (int) format, channels,
                                (AudioSystem::output_flags)flags);
 }
 
@@ -181,7 +178,7 @@ static audio_io_handle_t ap_get_input(struct audio_policy *pol, audio_source_t i
                                       audio_in_acoustics_t acoustics)
 {
     struct qcom_audio_policy *qap = to_qap(pol);
-    return qap->apm->getInput(inputSource, sampling_rate, format, channels,
+    return qap->apm->getInput((int) inputSource, sampling_rate, (int) format, channels,
                               (AudioSystem::audio_in_acoustics)acoustics);
 }
 
@@ -303,7 +300,7 @@ static bool ap_is_stream_active(const struct audio_policy *pol,
                                 uint32_t in_past_ms)
 {
     const struct qcom_audio_policy *qap = to_cqap(pol);
-    return qap->apm->isStreamActive(stream, in_past_ms);
+    return qap->apm->isStreamActive((int) stream, in_past_ms);
 }
 
 static int ap_dump(const struct audio_policy *pol, int fd)
