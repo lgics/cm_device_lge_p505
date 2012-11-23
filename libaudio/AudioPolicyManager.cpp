@@ -16,7 +16,7 @@
  * limitations under the License.
  */
 
-#define LOG_TAG "AudioPolicyManager7627"
+#define LOG_TAG "AudioPolicyManager"
 //#define LOG_NDEBUG 0
 #include <utils/Log.h>
 #include "AudioPolicyManager.h"
@@ -56,18 +56,18 @@ audio_devices_t AudioPolicyManager::getDeviceForStrategy(routing_strategy strate
     }
 
     switch (strategy) {
-        case STRATEGY_SONIFICATION_RESPECTFUL:
-            if (isInCall()) {
-                device = getDeviceForStrategy(STRATEGY_SONIFICATION, false /*fromCache*/);
-            } else if (isStreamActive(AudioSystem::MUSIC, SONIFICATION_RESPECTFUL_AFTER_MUSIC_DELAY)) {
-                // while media is playing (or has recently played), use the same device
-                device = getDeviceForStrategy(STRATEGY_MEDIA, false /*fromCache*/);
-            } else {
-                // when media is not playing anymore, fall back on the sonification behavior
-                device = getDeviceForStrategy(STRATEGY_SONIFICATION, false /*fromCache*/);
-            }
-            
-            break;
+    case STRATEGY_SONIFICATION_RESPECTFUL:
+        if (isInCall()) {
+            device = getDeviceForStrategy(STRATEGY_SONIFICATION, false /*fromCache*/);
+        } else if (isStreamActive(AudioSystem::MUSIC, SONIFICATION_RESPECTFUL_AFTER_MUSIC_DELAY)) {
+            // while media is playing (or has recently played), use the same device
+            device = getDeviceForStrategy(STRATEGY_MEDIA, false /*fromCache*/);
+        } else {
+            // when media is not playing anymore, fall back on the sonification behavior
+            device = getDeviceForStrategy(STRATEGY_SONIFICATION, false /*fromCache*/);
+        }
+
+        break;
 
     case STRATEGY_DTMF:
         if (!isInCall()) {
@@ -299,8 +299,8 @@ status_t AudioPolicyManager::checkAndSetVolume(int stream, int index, audio_io_h
         } else {
             voiceVolume = 1.0;
         }
-
-        if ((voiceVolume != mLastVoiceVolume && output == mPrimaryOutput)
+        
+        if ((voiceVolume >= 0 && output == mPrimaryOutput)
 #ifdef HAVE_FM_RADIO
           && (!(mAvailableOutputDevices & AudioSystem::DEVICE_OUT_FM))
 #endif
